@@ -35,10 +35,6 @@
             this.clearFilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.FileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NewNamePreview = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FullFilePath = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SaveToPath = new System.Windows.Forms.TextBox();
             this.SaveToButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -51,6 +47,10 @@
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.StartNumber = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
+            this.FileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NewNamePreview = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FullFilePath = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.StartAt.SuspendLayout();
@@ -104,6 +104,7 @@
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
@@ -120,31 +121,6 @@
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.Size = new System.Drawing.Size(461, 234);
             this.dataGridView1.TabIndex = 1;
-            // 
-            // FileName
-            // 
-            this.FileName.HeaderText = "File Name";
-            this.FileName.Name = "FileName";
-            this.FileName.ReadOnly = true;
-            this.FileName.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.FileName.Width = 170;
-            // 
-            // NewNamePreview
-            // 
-            this.NewNamePreview.HeaderText = "New Name (Preview)";
-            this.NewNamePreview.Name = "NewNamePreview";
-            this.NewNamePreview.Width = 170;
-            // 
-            // Status
-            // 
-            this.Status.HeaderText = "Status";
-            this.Status.Name = "Status";
-            // 
-            // FullFilePath
-            // 
-            this.FullFilePath.HeaderText = "Full File Path";
-            this.FullFilePath.Name = "FullFilePath";
-            this.FullFilePath.Visible = false;
             // 
             // SaveToPath
             // 
@@ -269,6 +245,36 @@
             this.label3.TabIndex = 14;
             this.label3.Text = "Start at:";
             // 
+            // FileName
+            // 
+            this.FileName.HeaderText = "File Name";
+            this.FileName.MinimumWidth = 140;
+            this.FileName.Name = "FileName";
+            this.FileName.ReadOnly = true;
+            this.FileName.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.FileName.Width = 140;
+            // 
+            // NewNamePreview
+            // 
+            this.NewNamePreview.HeaderText = "New Name (Preview)";
+            this.NewNamePreview.MinimumWidth = 140;
+            this.NewNamePreview.Name = "NewNamePreview";
+            this.NewNamePreview.Width = 140;
+            // 
+            // Status
+            // 
+            this.Status.HeaderText = "Status";
+            this.Status.MinimumWidth = 140;
+            this.Status.Name = "Status";
+            this.Status.Width = 140;
+            // 
+            // FullFilePath
+            // 
+            this.FullFilePath.HeaderText = "Full File Path";
+            this.FullFilePath.Name = "FullFilePath";
+            this.FullFilePath.Visible = false;
+            this.FullFilePath.Width = 92;
+            // 
             // MainPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -277,8 +283,10 @@
             this.Controls.Add(this.StartAt);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.menuStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
+            this.MaximizeBox = false;
             this.MinimumSize = new System.Drawing.Size(615, 300);
             this.Name = "MainPage";
             this.Text = "Mass File Renamer";
@@ -313,12 +321,12 @@
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem selectFilesToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem clearFilesToolStripMenuItem;
+        private System.Windows.Forms.NumericUpDown StartNumber;
+        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridViewTextBoxColumn FileName;
         private System.Windows.Forms.DataGridViewTextBoxColumn NewNamePreview;
         private System.Windows.Forms.DataGridViewTextBoxColumn Status;
         private System.Windows.Forms.DataGridViewTextBoxColumn FullFilePath;
-        private System.Windows.Forms.NumericUpDown StartNumber;
-        private System.Windows.Forms.Label label3;
     }
 }
 

@@ -90,13 +90,13 @@ namespace MassFileRenamer
         
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            Thread backgroundWork = new Thread(RenameFiles);
+            Thread backgroundWork = new Thread(new ThreadStart(RenameFiles));
             backgroundWork.Start();
         }
 
         private void RenameFiles()
         {
-            foreach (DataGridViewRow item in dataGridView1.Rows)
+            foreach (DataGridViewRow item in this.dataGridView1.Rows)
             {
                 try
                 {
@@ -120,8 +120,11 @@ namespace MassFileRenamer
                 }
                 catch (Exception ex)
                 {
-                    item.Cells["Status"].Style.BackColor = Color.Pink;
-                    item.Cells["Status"].Value = "Error! " + ex.Message;
+                    this.Invoke((MethodInvoker)delegate
+                    {
+                        item.Cells["Status"].Style.BackColor = Color.Pink;
+                        item.Cells["Status"].Value = "Error! " + ex.Message;
+                    });
                 }
             }
         }
