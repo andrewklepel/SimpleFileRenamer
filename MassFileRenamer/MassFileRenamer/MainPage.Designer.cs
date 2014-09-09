@@ -1,6 +1,6 @@
 ﻿namespace MassFileRenamer
 {
-    partial class Form1
+    partial class MainPage
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainPage));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.selectFilesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -38,20 +38,24 @@
             this.FileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NewNamePreview = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FullFilePath = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SaveToPath = new System.Windows.Forms.TextBox();
             this.SaveToButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.NewFileName = new System.Windows.Forms.TextBox();
             this.SaveButton = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.StartAt = new System.Windows.Forms.Panel();
             this.SavePanel = new System.Windows.Forms.Panel();
             this.RenameExistingCheckBox = new System.Windows.Forms.CheckBox();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.StartNumber = new System.Windows.Forms.NumericUpDown();
+            this.label3 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.panel1.SuspendLayout();
+            this.StartAt.SuspendLayout();
             this.SavePanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.StartNumber)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -76,14 +80,14 @@
             // selectFilesToolStripMenuItem1
             // 
             this.selectFilesToolStripMenuItem1.Name = "selectFilesToolStripMenuItem1";
-            this.selectFilesToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.selectFilesToolStripMenuItem1.Size = new System.Drawing.Size(140, 22);
             this.selectFilesToolStripMenuItem1.Text = "Select Files...";
             this.selectFilesToolStripMenuItem1.Click += new System.EventHandler(this.selectFilesToolStripMenuItem1_Click);
             // 
             // clearFilesToolStripMenuItem
             // 
             this.clearFilesToolStripMenuItem.Name = "clearFilesToolStripMenuItem";
-            this.clearFilesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.clearFilesToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
             this.clearFilesToolStripMenuItem.Text = "Clear Files...";
             this.clearFilesToolStripMenuItem.Click += new System.EventHandler(this.clearFilesToolStripMenuItem_Click);
             // 
@@ -108,7 +112,8 @@
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.FileName,
             this.NewNamePreview,
-            this.Status});
+            this.Status,
+            this.FullFilePath});
             this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataGridView1.Location = new System.Drawing.Point(0, 24);
             this.dataGridView1.Name = "dataGridView1";
@@ -134,6 +139,12 @@
             // 
             this.Status.HeaderText = "Status";
             this.Status.Name = "Status";
+            // 
+            // FullFilePath
+            // 
+            this.FullFilePath.HeaderText = "Full File Path";
+            this.FullFilePath.Name = "FullFilePath";
+            this.FullFilePath.Visible = false;
             // 
             // SaveToPath
             // 
@@ -191,25 +202,27 @@
             this.SaveButton.UseVisualStyleBackColor = true;
             this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
-            // panel1
+            // StartAt
             // 
-            this.panel1.Controls.Add(this.SavePanel);
-            this.panel1.Controls.Add(this.RenameExistingCheckBox);
-            this.panel1.Controls.Add(this.SaveButton);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.NewFileName);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel1.Location = new System.Drawing.Point(467, 24);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(132, 238);
-            this.panel1.TabIndex = 11;
+            this.StartAt.Controls.Add(this.label3);
+            this.StartAt.Controls.Add(this.StartNumber);
+            this.StartAt.Controls.Add(this.SavePanel);
+            this.StartAt.Controls.Add(this.RenameExistingCheckBox);
+            this.StartAt.Controls.Add(this.SaveButton);
+            this.StartAt.Controls.Add(this.label2);
+            this.StartAt.Controls.Add(this.NewFileName);
+            this.StartAt.Dock = System.Windows.Forms.DockStyle.Right;
+            this.StartAt.Location = new System.Drawing.Point(467, 24);
+            this.StartAt.Name = "StartAt";
+            this.StartAt.Size = new System.Drawing.Size(132, 238);
+            this.StartAt.TabIndex = 11;
             // 
             // SavePanel
             // 
             this.SavePanel.Controls.Add(this.SaveToButton);
             this.SavePanel.Controls.Add(this.SaveToPath);
             this.SavePanel.Controls.Add(this.label1);
-            this.SavePanel.Location = new System.Drawing.Point(0, 65);
+            this.SavePanel.Location = new System.Drawing.Point(0, 120);
             this.SavePanel.Name = "SavePanel";
             this.SavePanel.Size = new System.Drawing.Size(132, 72);
             this.SavePanel.TabIndex = 12;
@@ -220,7 +233,7 @@
             this.RenameExistingCheckBox.AutoSize = true;
             this.RenameExistingCheckBox.Checked = true;
             this.RenameExistingCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.RenameExistingCheckBox.Location = new System.Drawing.Point(6, 42);
+            this.RenameExistingCheckBox.Location = new System.Drawing.Point(7, 97);
             this.RenameExistingCheckBox.Name = "RenameExistingCheckBox";
             this.RenameExistingCheckBox.Size = new System.Drawing.Size(125, 17);
             this.RenameExistingCheckBox.TabIndex = 11;
@@ -228,26 +241,55 @@
             this.RenameExistingCheckBox.UseVisualStyleBackColor = true;
             this.RenameExistingCheckBox.CheckedChanged += new System.EventHandler(this.RenameExistingCheckBox_CheckedChanged);
             // 
-            // Form1
+            // StartNumber
+            // 
+            this.StartNumber.Location = new System.Drawing.Point(66, 43);
+            this.StartNumber.Maximum = new decimal(new int[] {
+            1744830463,
+            -1364693708,
+            12368714,
+            0});
+            this.StartNumber.Name = "StartNumber";
+            this.StartNumber.Size = new System.Drawing.Size(54, 20);
+            this.StartNumber.TabIndex = 13;
+            this.StartNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.StartNumber.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.StartNumber.ValueChanged += new System.EventHandler(this.StartNumber_ValueChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(16, 45);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(44, 13);
+            this.label3.TabIndex = 14;
+            this.label3.Text = "Start at:";
+            // 
+            // MainPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(599, 262);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.StartAt);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.MinimumSize = new System.Drawing.Size(615, 300);
-            this.Name = "Form1";
+            this.Name = "MainPage";
             this.Text = "Mass File Renamer";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.StartAt.ResumeLayout(false);
+            this.StartAt.PerformLayout();
             this.SavePanel.ResumeLayout(false);
             this.SavePanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.StartNumber)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -258,22 +300,25 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FileName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NewNamePreview;
         private System.Windows.Forms.TextBox SaveToPath;
         private System.Windows.Forms.Button SaveToButton;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox NewFileName;
         private System.Windows.Forms.Button SaveButton;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel StartAt;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
         private System.Windows.Forms.CheckBox RenameExistingCheckBox;
         private System.Windows.Forms.Panel SavePanel;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem selectFilesToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem clearFilesToolStripMenuItem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FileName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NewNamePreview;
         private System.Windows.Forms.DataGridViewTextBoxColumn Status;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FullFilePath;
+        private System.Windows.Forms.NumericUpDown StartNumber;
+        private System.Windows.Forms.Label label3;
     }
 }
 
